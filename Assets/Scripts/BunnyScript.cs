@@ -85,8 +85,15 @@ public class BunnyScript : MonoBehaviour
 
         if (other.gameObject.CompareTag("Rock"))
         {
-            score = score - 1;
-            scoreText.text = score.ToString();
+            if (score == 0)
+            {
+                scoreText.text = score.ToString();
+            }
+            else
+            {
+                score = score - 1;
+                scoreText.text = score.ToString();
+            }
            
         }
 
