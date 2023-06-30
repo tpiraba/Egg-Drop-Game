@@ -1,16 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Random = UnityEngine.Random;
 using UnityEngine;
+using System;
+using System.Threading;
 
 public class RockSpawner : MonoBehaviour
 {
     public GameObject eggPrefab;
     private float respawnTime = 1.0f;
-    private int currTime = 1;
+    public TimeSpan ts = new TimeSpan(0,0,5);
+    // private int currTime = 1;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(rockWave());
+        for (int i = 0; i < 6; i++)
+        {
+            StartCoroutine(rockWave());
+            Thread.Sleep(ts);
+        }
+        
     }
 
     private void spawnRock()
@@ -26,7 +35,6 @@ public class RockSpawner : MonoBehaviour
            
             yield return new WaitForSeconds(respawnTime);
             spawnRock();
-            currTime = currTime + 1;
         }
         
     }

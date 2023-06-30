@@ -8,6 +8,8 @@ public class BunnyScript : MonoBehaviour
     // public float speed = 10f;
     
     private int score = 0;
+    private int numOfLives = 3;
+
     public TextMeshProUGUI scoreText;
 
     private Rigidbody2D rb2D;
@@ -18,6 +20,8 @@ public class BunnyScript : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public Sprite left_bunny;
     public Sprite right_bunny;
+
+    //public SpriteRenderer lives;
     //private float jumpForce;
     //private bool isJumping;
     //private float moveHorizontal;
@@ -85,6 +89,10 @@ public class BunnyScript : MonoBehaviour
 
         if (other.gameObject.CompareTag("Rock"))
         {
+            
+            numOfLives = numOfLives - 1;
+
+            /*
             if (score == 0)
             {
                 scoreText.text = score.ToString();
@@ -94,6 +102,7 @@ public class BunnyScript : MonoBehaviour
                 score = score - 1;
                 scoreText.text = score.ToString();
             }
+            */
            
         }
 
